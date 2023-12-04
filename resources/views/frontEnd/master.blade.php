@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="https://www.instagram.com/yana.surya1989/" class="instagram" target="_blank">Yana</a>
         <div class="header">
             <h1 class="judul">MyWebsite</h1>
             <ul>
@@ -36,7 +37,7 @@
             </div>
             <div class="sidebar">
                 <h3>Tentang Penulis</h3>
-                <img src="image/Yana.jpg" alt="">
+                <img src="{{asset('blog')}}/assets/images/Yana.jpg" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam debitis fugiat est praesentium ea quo, dignissimos quos nemo laboriosam labore soluta ullam ipsum maxime dolores rem sapiente voluptatibus perferendis ab?</p>
             </div>
         </div>

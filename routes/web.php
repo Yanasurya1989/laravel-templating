@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminMaster;
 use App\Http\Controllers\MasterController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// front end
 Route::get('/', [MasterController::class, 'index']);
+
+// back end
+Route::get('/admin', [AdminMaster::class, 'index']);
+
+// post
+Route::get('/post/insert', [AdminMaster::class, 'create']);
+Route::post('/post/store', [AdminMaster::class, 'store']);

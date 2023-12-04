@@ -51,8 +51,8 @@
 
 body{
     font: 16px/28px arial, sans-serif;
-    background-image: url(image/background.webp);
-    background-color: #eaeaea;
+    background-image: url(../images/background.webp);
+    /* background-color: #eaeaea; */
     color: #333;
 }
 
@@ -77,7 +77,7 @@ body{
 .instagram {
     width: 200px;
     height: 200px;
-    background-image: url(image/twitter-removebg-preview.png);
+    background-image: url(../images/twitter-removebg-preview.png);
     background-repeat: no-repeat;
     display: inline-block;
     text-indent: -9999px;
@@ -115,7 +115,7 @@ body{
 
 .hero{
     height: 320px;
-    background-image: url(image/hero.png);
+    background-image: url(../images/hero.png);
     background-size: cover;
     background-position: 0 -200px; /*yang diatur posisi horizontal dan vertical*/
     border-top: 5px solid salmon;
