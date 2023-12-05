@@ -26,5 +26,8 @@ Route::get('/', [MasterController::class, 'index']);
 Route::get('/admin', [AdminMaster::class, 'index']);
 
 // post
+Route::post('/post/update/{admins}', [AdminMaster::class, 'update']);
+Route::get('/post/edit/{admins}', [AdminMaster::class, 'edit']);
 Route::get('/post/insert', [AdminMaster::class, 'create']);
+Route::get('/post/delete/{admins}', [AdminMaster::class, 'destroy']);
 Route::post('/post/store', [AdminMaster::class, 'store']);

@@ -18,6 +18,7 @@ class AdminMaster extends Controller
     public function index()
     {
         $post = Admins::all();
+        // return view('backEnd.layout.content', compact('post'));
         return view('backEnd.layout.content', ['post' => $post]);
     }
 
@@ -93,7 +94,7 @@ class AdminMaster extends Controller
      */
     public function edit(Admins $admins)
     {
-        //
+        return view('backEnd.layout.edit', compact('admins'));
     }
 
     /**
@@ -105,7 +106,40 @@ class AdminMaster extends Controller
      */
     public function update(Request $request, Admins $admins)
     {
-        //
+        //validasi data
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            // 'image' => 'required',
+            'title' => 'required',
+            'author' => 'required',
+            'content' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator->messages());
+        }
+
+        $data = [
+            'id' => request()->id,
+            'title' => request()->title,
+            'author' => request()->author,
+            'content' => request()->content,
+        ];
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+
+            $path = Storage::putFile('public/image',$image);
+            $data['image'] = $path;
+        }
+
+        $admins = $admins->update($data);
+
+        if($admins){
+            return Redirect()->to('/admin')->withSuccess('data berhasil diubah');
+        }else{
+            return back()->withErrors('data gagal diubah');
+        }
     }
 
     /**
@@ -116,6 +150,16 @@ class AdminMaster extends Controller
      */
     public function destroy(Admins $admins)
     {
-        //
+        if(Storage::get($admins->image)){
+            Storage::delete($admins->image);
+        }
+
+        $admins = $admins -> delete();
+
+        if($admins){
+            return back()->withSuccess('Deleted success');
+        }else{
+            return back()->withErrors('Deleted Fail');
+        }
     }
 }

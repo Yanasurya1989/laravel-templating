@@ -19,6 +19,7 @@
                         <th>Title</th>
                         <th>Author</th>
                         <th>Content</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,11 +28,18 @@
                     <tr class="active">
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>
-                            <img src="http://127.0.0.1:8000{{ Storage::url($list->image) }}" alt="" width="100">
+
+                            {{-- <img src="http://127.0.0.1:8000{{ Storage::url($list->image) }}" alt="" width="100"> --}}
+                            <a href="{{Storage::url($list->image)}}">Lihat file</a>
                         </td>
                         <td>{{$list->title}}</td>
                         <td>{{$list->author}}</td>
                         <td>{{$list->content}}</td>
+                        <td>
+                            <a href="">Detil | </a>
+                            <a href="/post/edit/{{$list->id}}">Update | </a>
+                            <a href="post/delete/{{ $list->id }}" onclick="return confirm('Yakin?')">Delete</a>
+                        </td>
                     </tr>
 
                     @endforeach
