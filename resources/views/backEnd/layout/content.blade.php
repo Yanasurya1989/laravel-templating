@@ -45,6 +45,9 @@
                     
                 </tbody>
             </table>
+            <div class="text-right mt-5">
+                {{ $post->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
     
