@@ -9,7 +9,7 @@ class Admins extends Model
 {
     use HasFactory;
     protected $table = 'posts';
-
+    protected $primaryKey ='id';
     protected $fillable = [
         'title',
         'author',

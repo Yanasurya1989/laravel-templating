@@ -14,9 +14,15 @@ class Frontend extends Controller
      */
     public function index()
     {
-        $post = Admins::all();
+        // $post = Admins::all();
+        $post = Admins::orderBy('id', 'asc')->take(3)->get();//membatasi jumlah postingan
+        // $post = Admins::orderBy('id', 'desc')->take(9)->get();
         return view('frontEnd.layout.content', compact('post'));
+
+
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -45,9 +51,10 @@ class Frontend extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)//dari route
     {
-        //
+        $id_var = Admins::where('id', $id)->get();
+        return view('frontEnd.layout.detil', compact('id_var'));
     }
 
     /**

@@ -17,7 +17,7 @@ class AdminMaster extends Controller
      */
     public function index()
     {
-        $post = Admins::paginate(7);
+        $post = Admins::paginate(5);
         // return view('backEnd.layout.content', compact('post'));
         return view('backEnd.layout.content', ['post' => $post]);
     }

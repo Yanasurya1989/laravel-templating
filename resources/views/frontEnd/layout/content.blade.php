@@ -25,7 +25,9 @@
                         pada {{date('d-m-Y',strtotime($list->created_at))}}</p>
 
                     <p>
-                        {{ $list->content }}
+                        {{-- {{ $list->content }} --}}
+                        {{substr(strip_tags($list->content),0,100)}} 
+                        <a href="detil/{{$list->id}}">see more..</a>
                     </p>
                 @endforeach
             </div>

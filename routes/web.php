@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend;
 use App\Http\Controllers\IndexFe;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\MasterController;
+use App\Models\Admins;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,3 +48,6 @@ Route::middleware(['auth'])->group(function () {
 
 // index fe
 Route::get('/indexfe',[IndexFe::class,'index']);
+
+// detil
+Route::get('/detil/{id}', [Frontend::class, 'show']);
