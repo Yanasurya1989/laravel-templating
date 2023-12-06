@@ -15,8 +15,8 @@ class Frontend extends Controller
     public function index()
     {
         // $post = Admins::all();
-        $post = Admins::orderBy('id', 'asc')->take(3)->get();//membatasi jumlah postingan
-        // $post = Admins::orderBy('id', 'desc')->take(9)->get();
+        // $post = Admins::orderBy('id', 'asc')->take(3)->get();//membatasi jumlah postingan
+        $post = Admins::orderBy('id', 'desc')->take(9)->get();
         return view('frontEnd.layout.content', compact('post'));
 
 
