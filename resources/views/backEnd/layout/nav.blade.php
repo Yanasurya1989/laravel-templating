@@ -131,18 +131,18 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="index.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                    <a href="/logout"><i class="fa fa-dashboard fa-fw nav_icon"></i>Logout</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-laptop nav_icon"></i>Layouts<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
+                    {{-- <a href="#"><i class="fa fa-laptop nav_icon"></i>Logout<span class="fa arrow"></span></a> --}}
+                    {{-- <ul class="nav nav-second-level">
                         <li>
                             <a href="grids.html">Grid System</a>
                         </li>
-                    </ul>
+                    </ul> --}}
                     <!-- /.nav-second-level -->
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#"><i class="fa fa-indent nav_icon"></i>Menu
                         Levels<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -205,7 +205,7 @@
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
-                </li>
+                </li> --}}
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

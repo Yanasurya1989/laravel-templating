@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminMaster;
+use App\Http\Controllers\Frontend;
+use App\Http\Controllers\Login;
 use App\Http\Controllers\MasterController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,14 +22,24 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // front end
-Route::get('/', [MasterController::class, 'index']);
+Route::get('/', [Frontend::class, 'index']);
 
-// back end
-Route::get('/admin', [AdminMaster::class, 'index']);
+Route::middleware(['guest'])->group(function () {
+    // login
+    Route::get('/login', [Login::class, 'index'])->name('login');
+    Route::post('/login/process', [Login::class, 'authenticate']);
+});
 
-// post
-Route::post('/post/update/{admins}', [AdminMaster::class, 'update']);
-Route::get('/post/edit/{admins}', [AdminMaster::class, 'edit']);
-Route::get('/post/insert', [AdminMaster::class, 'create']);
-Route::get('/post/delete/{admins}', [AdminMaster::class, 'destroy']);
-Route::post('/post/store', [AdminMaster::class, 'store']);
+Route::middleware(['auth'])->group(function () {
+    // post
+    Route::post('/post/update/{admins}', [AdminMaster::class, 'update']);
+    Route::get('/post/edit/{admins}', [AdminMaster::class, 'edit']);
+    Route::get('/post/insert', [AdminMaster::class, 'create']);
+    Route::get('/post/delete/{admins}', [AdminMaster::class, 'destroy']);
+    Route::post('/post/store', [AdminMaster::class, 'store']);
+
+    // back end
+    Route::get('/admin', [AdminMaster::class, 'index']);
+
+    Route::get('/logout', [Login::class, 'logout'])->name('logout');
+});
