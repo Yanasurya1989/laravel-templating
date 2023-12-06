@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminMaster;
 use App\Http\Controllers\Frontend;
+use App\Http\Controllers\IndexFe;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\MasterController;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/logout', [Login::class, 'logout'])->name('logout');
 });
+
+// index fe
+Route::get('/indexfe',[IndexFe::class,'index']);
