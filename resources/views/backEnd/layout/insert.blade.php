@@ -26,10 +26,15 @@
                 <input type="text" name="author" class="form-control1">
             </div>
     
-            <div class="mb-3 form-group">
+            {{-- <div class="mb-3 form-group">
                 <label for="" class="form-label">Content</label>
                 <textarea name="content" id="summernote" cols="30" rows="10" class="form-control1"></textarea>
-            </div>
+            </div> --}}
+
+            {{-- summernote --}}
+            {{-- @include('backEnd.layout.summernote') --}}
+            @include('backEnd.layout.ckeditor')
+            {{-- end summernote --}}
 
             <button class="btn btn-primary">Post</button>
         </form>

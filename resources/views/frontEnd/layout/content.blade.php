@@ -17,7 +17,7 @@
         <div class="hero"></div>
 
         <div class="content cf">
-            <div class="main">
+            <div class="main text-right">
                 @foreach ($post as $list)
                     <h2>{{ $list->title }}</h2>
                     <p class="penulis">ditulis oleh <a href="https://github.com/Yanasurya1989"
@@ -30,6 +30,11 @@
                         <a href="detil/{{$list->id}}">see more..</a>
                     </p>
                 @endforeach
+
+                <div class="text-right mt-5">
+                    {{ $post->links('pagination::bootstrap-4') }}
+                </div>
+                
             </div>
             <div class="sidebar">
                 <h3>Tentang Penulis</h3>

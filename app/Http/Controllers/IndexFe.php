@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admins;
 use App\Models\Index;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class IndexFe extends Controller
      */
     public function index()
     {
-        return view('frontEnd.indexfe.master');
+        // $post = Admins::all();
+        $post = Admins::paginate(3);
+        return view('frontEnd.indexfe.master', compact('post'));
     }
 
     /**

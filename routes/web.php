@@ -49,5 +49,13 @@ Route::middleware(['auth'])->group(function () {
 // index fe
 Route::get('/indexfe',[IndexFe::class,'index']);
 
+Route::get('/blog', [Frontend::class, 'indexbtr']);
+
+Route::get('/detilformthem',[Frontend::class,'detilformthem']);
+
 // detil
-Route::get('/detil/{id}', [Frontend::class, 'show']);
+Route::get('/detil/{id}', [Frontend::class, 'show']); //mine
+Route::get('/detil', [Frontend::class, 'showdetil']);
+
+Route::get('/summernote', [AdminMaster::class, 'summernote']);
+Route::get('/ckeditor', [AdminMaster::class, 'ckeditor']);

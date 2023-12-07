@@ -22,6 +22,14 @@ class AdminMaster extends Controller
         return view('backEnd.layout.content', ['post' => $post]);
     }
 
+    public function summernote(){
+        return view('backEnd.layout.summernote');
+    }
+
+    public function ckeditor(){
+        return view('backEnd.layout.ckeditor');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

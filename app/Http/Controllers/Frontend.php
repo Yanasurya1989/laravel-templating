@@ -15,14 +15,21 @@ class Frontend extends Controller
     public function index()
     {
         // $post = Admins::all();
+        $post = Admins::paginate(3);
         // $post = Admins::orderBy('id', 'asc')->take(3)->get();//membatasi jumlah postingan
-        $post = Admins::orderBy('id', 'desc')->take(9)->get();
+        // $post = Admins::orderBy('id', 'desc')->take(9)->get();
         return view('frontEnd.layout.content', compact('post'));
-
 
     }
 
+    public function indexbtr(){
+        $post = Admins::all();
+        return view('frontEnd.indexfe.recentblog', compact('post'));
+    }
 
+    public function detilformthem(){
+        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -55,6 +62,12 @@ class Frontend extends Controller
     {
         $id_var = Admins::where('id', $id)->get();
         return view('frontEnd.layout.detil', compact('id_var'));
+
+        // return view('frontEnd.indexfe.blogdetil');
+    }
+
+    public function showdetil(){
+        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil');
     }
 
     /**

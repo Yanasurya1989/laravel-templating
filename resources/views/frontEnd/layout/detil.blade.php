@@ -41,6 +41,11 @@
             </div>
         </div>
 
+        <form action="">
+            <label for="">Leave coment</label><br>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </form>
+
         <div class="footer">
             <p class="copy">Copyright 2023, Yana. </p>
         </div>
