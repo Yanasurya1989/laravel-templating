@@ -13,7 +13,7 @@
         <ul>
           <li><a href="index.html" class="active">Beranda</a></li>
           <li><a href="about.html">Agenda</a></li>
-          <li><a href="blog.html">Berita</a></li>
+          <li><a href="#recent-blog-posts">Berita</a></li>
           <li><a href="services.html">PPDB</a></li>
           {{-- <li><a href="projects.html">Projects</a></li> --}}
           <li class="dropdown"><a href="#"><span>Oase Iman</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>

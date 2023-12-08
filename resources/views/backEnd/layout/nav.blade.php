@@ -131,11 +131,29 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
+                    <a href="/head"><i class="fa fa-dashboard fa-fw nav_icon"></i>Head</a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-envelope nav_icon"></i>Post<span
+                            class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/admin">Berita</a>
+                        </li>
+                        <li>
+                            <a href="/admin/articles">Artikel</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+
+                <li>
                     <a href="/logout"><i class="fa fa-dashboard fa-fw nav_icon"></i>Logout</a>
                 </li>
-                <li>
-                    {{-- <a href="#"><i class="fa fa-laptop nav_icon"></i>Logout<span class="fa arrow"></span></a> --}}
-                    {{-- <ul class="nav nav-second-level">
+                {{-- <li>
+                    <a href="#"><i class="fa fa-laptop nav_icon"></i>Logout<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
                         <li>
                             <a href="grids.html">Grid System</a>
                         </li>

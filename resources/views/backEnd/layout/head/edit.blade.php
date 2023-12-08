@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="tab-pane active" id="horizontal-form">
-        <form action="/post/store" method="POST" class="form-horizontal" enctype="multipart/form-data">
+        <form action="/post/update/{{$admins->id}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
             @if (session('errors'))
                 <div class="alert alert-danger" role="alert">
                     {{(session('errors'))->first()}}
@@ -12,31 +12,19 @@
             @endif
             @csrf
             <div class="mb-3 form-group">
-                <label for="" class="form-label">Image</label>
-                <input type="file" name="images" class="form-control1" accept="aplication/msword, application/pdf">
+                <label for="" class="form-label">id</label>
+                <input type="text" name="id" class="form-control1" value="{{$admins -> id}}">
             </div>
-
-            
+            <div class="mb-3 form-group">
+                <label for="" class="form-label">Favicon</label> <br>
+                <img src="{{ Storage::url($admins -> favicon)}}" alt="" width="100"><br>
+                <input type="file" name="favicon" class="form-control1">
+            </div>
 
             <div class="mb-3 form-group">
                 <label for="" class="form-label">Title</label>
-                <input type="text" name="title" class="form-control1">
+                <input type="text" name="title" class="form-control1" value="{{$admins -> title}}">
             </div>
-
-            <div class="mb-3 form-group">
-                <label for="" class="form-label">Author</label>
-                <input type="text" name="author" class="form-control1">
-            </div>
-    
-            {{-- <div class="mb-3 form-group">
-                <label for="" class="form-label">Content</label>
-                <textarea name="content" id="summernote" cols="30" rows="10" class="form-control1"></textarea>
-            </div> --}}
-
-            {{-- summernote --}}
-            {{-- @include('backEnd.layout.summernote') --}}
-            @include('backEnd.layout.ckeditor')
-            {{-- end summernote --}}
 
             <button class="btn btn-primary">Post</button>
         </form>

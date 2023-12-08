@@ -1,44 +1,53 @@
 @extends('backEnd.layout.master')
-@section('inititle', 'insert')
+@section('inititle', 'add article')
 @section('inikontent')
 
 <div class="container">
     <div class="tab-pane active" id="horizontal-form">
-        <form action="/post/store" method="POST" class="form-horizontal" enctype="multipart/form-data">
+        <form action="/admin/article/store" method="POST" class="form-horizontal">
             @if (session('errors'))
                 <div class="alert alert-danger" role="alert">
                     {{(session('errors'))->first()}}
                 </div>
             @endif
-            @csrf
+            {{-- @csrf
             <div class="mb-3 form-group">
-                <label for="" class="form-label">Image</label>
-                <input type="file" name="images" class="form-control1" accept="aplication/msword, application/pdf">
+                <label for="" class="form-label">Id jenis</label>
+                <input type="text" name="id_jenis" class="form-control1" >
+            </div> --}}
+
+            <div class="mb-3 form-group">
+                <label for="" class="form-label">Penulis</label>
+                <input type="text" name="author" class="form-control1" >
             </div>
 
-            
+            <div class="mb-3 form-group">
+                <label for="" class="form-label">Image</label>
+                <input type="file" name="gambar" class="form-control1" accept="aplication/msword, application/pdf">
+            </div>
 
             <div class="mb-3 form-group">
                 <label for="" class="form-label">Title</label>
                 <input type="text" name="title" class="form-control1">
             </div>
 
-            <div class="mb-3 form-group">
-                <label for="" class="form-label">Author</label>
-                <input type="text" name="author" class="form-control1">
-            </div>
+            {{-- summernote --}}
+            {{-- @include('backEnd.layout.summernote') --}}
+            @include('backEnd.article.ckeditor')
+            {{-- end summernote --}}
+
+            {{-- <div class="mb-3 form-group">
+                <label for="" class="form-label">Jenis</label>
+                <input type="text" name="jenis" class="form-control1">
+            </div> --}}
     
             {{-- <div class="mb-3 form-group">
                 <label for="" class="form-label">Content</label>
                 <textarea name="content" id="summernote" cols="30" rows="10" class="form-control1"></textarea>
             </div> --}}
 
-            {{-- summernote --}}
-            {{-- @include('backEnd.layout.summernote') --}}
-            @include('backEnd.layout.ckeditor')
-            {{-- end summernote --}}
-
-            <button class="btn btn-primary">Post</button>
+            
+            <button class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>

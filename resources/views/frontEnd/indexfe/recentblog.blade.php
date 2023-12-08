@@ -1,4 +1,4 @@
-<section id="recent-blog-posts" class="recent-blog-posts">
+<section id="recent-blog-posts" class="recent-blog-posts mt-0">
     <div class="container" data-aos="fade-up">
 
         <div class=" section-header">
@@ -14,14 +14,14 @@
 
                         <div class="post-img position-relative overflow-hidden">
                             {{-- <img src="{{ asset('UpConstruction') }}/assets/img/hero-carousel/hero-carousel-1.png" --}}
-                            <img src="{{Storage::url($list->image)}}"
+                            <img src="{{Storage::url($list->images)}}"
                                 class="img-fluid" alt="">
-                            <span class="post-date">{{$list->created_at}}</span>
+                            <span class="post-date">{{$list->created_at->isoFormat('d MMMM Y')}}</span>
                         </div>
 
                         <div class="post-content d-flex flex-column">
 
-                            <a href="/detil">
+                            <a href="detil/{{$list->id}}">
                                 <h3 class="post-title">{{$list->title}}</h3>
                             </a>
 
@@ -37,7 +37,7 @@
 
                             <hr>
 
-                            <a href="/detilformthem" class="readmore stretched-link"><span>Read More</span><i
+                            <a href="/detilformthem/{{$list->id}}" class="readmore stretched-link"><span>Read More</span><i
                                     class="bi bi-arrow-right"></i></a>
                         </div>
 

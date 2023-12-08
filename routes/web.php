@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminMaster;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\Frontend;
+use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IndexFe;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\MasterController;
 use App\Models\Admins;
+use App\Models\Articles;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,11 +54,27 @@ Route::get('/indexfe',[IndexFe::class,'index']);
 
 Route::get('/blog', [Frontend::class, 'indexbtr']);
 
-Route::get('/detilformthem',[Frontend::class,'detilformthem']);
+Route::get('/detilformthem/{id}',[Frontend::class,'detilformthem']);
 
 // detil
-Route::get('/detil/{id}', [Frontend::class, 'show']); //mine
+// Route::get('/detil/{id}', [Frontend::class, 'show']); //mine
+Route::get('/detil/{id}', [Frontend::class, 'showdetil']); //mine
 Route::get('/detil', [Frontend::class, 'showdetil']);
 
 Route::get('/summernote', [AdminMaster::class, 'summernote']);
 Route::get('/ckeditor', [AdminMaster::class, 'ckeditor']);
+
+// head
+Route::get('/head', [HeadController::class, 'index']);
+Route::get('/head/create', [HeadController::class, 'create']);
+Route::get('/head/edit', [HeadController::class, 'edit']);
+Route::post('/head/store', [HeadController::class, 'store']);
+
+// register
+Route::get('/register', [Login::class, 'reg']);
+Route::post('/registerProses', [Login::class, 'store']);
+
+// artikel
+Route::get('/admin/articles', [ArtikelController::class, 'index']);
+Route::get('/admin/article/create', [ArtikelController::class, 'create']);
+Route::post('/admin/article/store', [ArtikelController::class, 'store']);

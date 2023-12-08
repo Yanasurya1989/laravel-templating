@@ -5,21 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admins extends Model
+class Types extends Model
 {
     use HasFactory;
-    protected $table = 'posts';
+
+    protected $table = 'types';
     protected $primaryKey ='id';
     protected $fillable = [
-        'title',
-        'author',
-        'content',
-        'images',
+        'jenis',
         'created_at',
         'updated_at',
 
     ];
-
-    protected $dates = ['created_at','updated_at'];
-
 }

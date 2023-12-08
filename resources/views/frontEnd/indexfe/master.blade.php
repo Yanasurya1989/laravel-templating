@@ -4,14 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Yayasan Baiturrahman Prambanan</title>
+    <title>Yayasan Baiturrahman</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
     <link href="{{ asset('UpConstruction') }}/assets/img/favicon.png" rel="icon">
     {{-- <link href="{{ asset('UpConstruction') }}/assets/img/apple-touch-icon.png" rel="apple-touch-icon"> --}}
+   
+    {{-- @foreach ($head as $list)
+    @endforeach --}}
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

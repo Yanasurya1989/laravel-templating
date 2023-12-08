@@ -52,7 +52,7 @@ class AdminMaster extends Controller
             'author' => 'required',
             'title' => 'required',
             'content' => 'required',
-            'image' => 'required',
+            'images',
         ]);
 
         // mengembalikan pesan eror
@@ -66,11 +66,11 @@ class AdminMaster extends Controller
             'content' => $request->content,
         ];
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
+        if($request->hasFile('images')){
+            $image = $request->file('images');
 
             $path = Storage::putFileAs('public/images', $image, $image->getClientOriginalName());
-            $data['image'] = $path;
+            $data['images'] = $path;
         }
 
         $post = Admins::create($data);

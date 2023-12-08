@@ -4,7 +4,7 @@
 
       <h2>Blog Details</h2>
       <ol>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="/indexfe">Home</a></li>
         <li>Blog Details</li>
       </ol>
 
@@ -22,6 +22,7 @@
           <article class="blog-details">
 
             @include('frontEnd.indexfe.blogsdetil.detilsarticle')
+            {{-- @yield('konten') --}}
 
           </article><!-- End blog post -->
 

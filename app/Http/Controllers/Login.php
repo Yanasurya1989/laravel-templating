@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class Login extends Controller
 {
@@ -20,6 +24,10 @@ class Login extends Controller
             // return view('/login');
             return view('backEnd.login.index');
         }
+    }
+
+    public function reg(){
+        return view('backEnd.login.register');
     }
 
     /**
@@ -40,7 +48,36 @@ class Login extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name'=> 'required',
+            'profesi'=> 'required',
+            'deskripsi'=> 'required',
+            'email' => 'required',
+            'foto' => 'required',
+            'password' => 'required',
+        ]);
+// dd($request);
+        if($validator -> fails()){
+            return back()->withInput()->withErrors($validator->messages());
+        }
+
+        $foto = $request->file('foto');
+        $path = Storage::putFile('public/image', $foto);
+
+        $customer = User::create([
+            'name'=> $request->name,
+            'email' => $request->email,
+            'profesi' => $request->profesi,
+            'deskripsi' => $request->deskripsi,
+            'foto' => $path,
+            'password' => Hash::make($request->password),
+        ]);
+
+        if($customer){
+            return redirect()->to('/login')->withSuccess('Berhasil tersimpan');
+        }else{
+            return back()->withInput()->withErrors('gagal registrasi');
+        }
     }
 
     /**

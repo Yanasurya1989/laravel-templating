@@ -27,8 +27,9 @@ class Frontend extends Controller
         return view('frontEnd.indexfe.recentblog', compact('post'));
     }
 
-    public function detilformthem(){
-        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil');
+    public function detilformthem($id){
+        $template = Admins::where('id', $id)->get();
+        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil', compact('template'));
     }
 
     /**
@@ -66,9 +67,15 @@ class Frontend extends Controller
         // return view('frontEnd.indexfe.blogdetil');
     }
 
-    public function showdetil(){
-        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil');
+    public function showdetil($id){
+        $template = Admins::where('id', $id)->get();
+        return view('frontEnd.indexfe.blogsdetil.detilsarticle', compact('template'));
     }
+
+    // public function showthemeblogdetil($id){
+    //     $template = Admins::where('id', $id)->get();
+    //     return view('d');
+    // }
 
     /**
      * Show the form for editing the specified resource.

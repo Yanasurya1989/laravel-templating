@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('subtypes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('profesi');
-            $table->string('deskripsi');
-            $table->string('foto');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('nama', 255)->required;
+            $table->unsignedBigInteger('id_subtype');
+            $table->string('subtype', 255)->required;
             $table->timestamps();
+
+            $table->foreign('id_subtype')->references('id')->on('types')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('subtype');
     }
 };

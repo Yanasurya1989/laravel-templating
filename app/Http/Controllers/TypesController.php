@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admins;
-use App\Models\Index;
-use Carbon\Carbon;
+use App\Models\Types;
 use Illuminate\Http\Request;
 
-class IndexFe extends Controller
+class TypesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,7 @@ class IndexFe extends Controller
      */
     public function index()
     {
-        // $post = Admins::all();
-        $post = Admins::paginate(3);
-        // $date = Carbon::parse($post->created_at)->format('M d');
-        return view('frontEnd.indexfe.master', compact('post'));
-
+        //
     }
 
     /**
@@ -47,10 +41,10 @@ class IndexFe extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Index  $index
+     * @param  \App\Models\Types  $types
      * @return \Illuminate\Http\Response
      */
-    public function show(Index $index)
+    public function show(Types $types)
     {
         //
     }
@@ -58,10 +52,10 @@ class IndexFe extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Index  $index
+     * @param  \App\Models\Types  $types
      * @return \Illuminate\Http\Response
      */
-    public function edit(Index $index)
+    public function edit(Types $types)
     {
         //
     }
@@ -70,10 +64,10 @@ class IndexFe extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Index  $index
+     * @param  \App\Models\Types  $types
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Index $index)
+    public function update(Request $request, Types $types)
     {
         //
     }
@@ -81,10 +75,10 @@ class IndexFe extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Index  $index
+     * @param  \App\Models\Types  $types
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Index $index)
+    public function destroy(Types $types)
     {
         //
     }

@@ -28,8 +28,8 @@
                     <tr class="active">
                         <th scope="row">{{$loop->iteration+$post->firstItem()-1}}</th>
                         <td>
-                            {{-- <img src="http://127.0.0.1:8000{{ Storage::url($list->image) }}" alt="" width="100"> --}}
-                            <a href="{{Storage::url($list->image)}}">Lihat file</a>
+                            <img src="http://127.0.0.1:8000{{ Storage::url($list->images) }}" alt="" width="100">
+                            {{-- <a href="{{Storage::url($list->images)}}">Lihat file</a> --}}
                         </td>
                         <td>{{$list->title}}</td>
                         <td>{{$list->author}}</td>
