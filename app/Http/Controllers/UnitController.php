@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admins;
+use App\Models\Units;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class AdminMaster extends Controller
+class UnitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +16,13 @@ class AdminMaster extends Controller
      */
     public function index()
     {
-        $post = Admins::paginate(5);
-        // return view('backEnd.layout.content', compact('post'));
-        return view('backEnd.layout.content', ['post' => $post]);
+        $post = Units::paginate(5);
+        return view('backEnd.unit.index', compact('post'));
     }
 
-    public function summernote(){
-        return view('backEnd.layout.summernote');
-    }
-
-    public function ckeditor(){
-        return view('backEnd.layout.ckeditor');
+    public function feature(){
+        $feature = Units::all();
+        return view('frontEnd.indexfe.master', compact('feature'));
     }
 
     /**
@@ -37,7 +32,7 @@ class AdminMaster extends Controller
      */
     public function create()
     {
-        return view('backEnd.layout.insert');
+        return view('backEnd.unit.insert');
     }
 
     /**
@@ -49,10 +44,9 @@ class AdminMaster extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'author' => 'required',
+            'image' => 'required',
             'title' => 'required',
             'content' => 'required',
-            'images',
         ]);
 
         // mengembalikan pesan eror
@@ -62,21 +56,20 @@ class AdminMaster extends Controller
 
         $data = [
             'title' => $request->title,
-            'author' => $request->author,
             'content' => $request->content,
         ];
 
-        if($request->hasFile('images')){
-            $image = $request->file('images');
+        if($request->hasFile('image')){
+            $image = $request->file('image');
 
             $path = Storage::putFileAs('public/images', $image, $image->getClientOriginalName());
-            $data['images'] = $path;
+            $data['image'] = $path;
         }
 
-        $post = Admins::create($data);
+        $post = Units::create($data);
 
         if($post){
-            return Redirect()->to('/admin')->withSuccess('Data berhasil ditambahkan');
+            return Redirect()->to('/unit')->withSuccess('Data berhasil ditambahkan');
 
         }else{
             return back()->withErrors('Gagal menambahkan data');
@@ -86,10 +79,10 @@ class AdminMaster extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admins  $admins
+     * @param  \App\Models\Units  $units
      * @return \Illuminate\Http\Response
      */
-    public function show(Admins $admins)
+    public function show(Units $units)
     {
         //
     }
@@ -97,29 +90,28 @@ class AdminMaster extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admins  $admins
+     * @param  \App\Models\Units  $units
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admins $admins)
+    public function edit(Units $units)
     {
-        return view('backEnd.layout.edit', compact('admins'));
+        return view('backEnd.unit.edit', compact('units'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admins  $admins
+     * @param  \App\Models\Units  $units
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admins $admins)
+    public function update(Request $request, Units $units)
     {
         //validasi data
         $validator = Validator::make($request->all(), [
             'id' => 'required',
-            'images' => 'required',
+            'image',
             'title' => 'required',
-            'author' => 'required',
             'content' => 'required',
         ]);
 
@@ -130,21 +122,20 @@ class AdminMaster extends Controller
         $data = [
             'id' => request()->id,
             'title' => request()->title,
-            'author' => request()->author,
             'content' => request()->content,
         ];
 
-        if($request->hasFile('images')){
-            $image = $request->file('images');
+        if($request->hasFile('image')){
+            $image = $request->file('image');
 
             $path = Storage::putFile('public/images',$image);
-            $data['images'] = $path;
+            $data['image'] = $path;
         }
 
-        $admins = $admins->update($data);
+        $admins = $units->update($data);
 
         if($admins){
-            return Redirect()->to('/admin')->withSuccess('data berhasil diubah');
+            return Redirect()->to('/unit')->withSuccess('data berhasil diubah');
         }else{
             return back()->withErrors('data gagal diubah');
         }
@@ -153,18 +144,18 @@ class AdminMaster extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admins  $admins
+     * @param  \App\Models\Units  $units
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admins $admins)
+    public function destroy(Units $units)
     {
-        if(Storage::get($admins->image)){
-            Storage::delete($admins->image);
+        if(Storage::get($units->image)){
+            Storage::delete($units->image);
         }
 
-        $admins = $admins -> delete();
+        $units = $units -> delete();
 
-        if($admins){
+        if($units){
             return back()->withSuccess('Deleted success');
         }else{
             return back()->withErrors('Deleted Fail');

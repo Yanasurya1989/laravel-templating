@@ -149,6 +149,10 @@
                 </li>
 
                 <li>
+                    <a href="/unit"><i class="fa fa-dashboard fa-fw nav_icon"></i>Unit</a>
+                </li>
+
+                <li>
                     <a href="/logout"><i class="fa fa-dashboard fa-fw nav_icon"></i>Logout</a>
                 </li>
                 {{-- <li>

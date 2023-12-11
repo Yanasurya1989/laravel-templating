@@ -1,4 +1,4 @@
-<section id="recent-blog-posts" class="recent-blog-posts mt-0">
+<section id="recent-blog-posts" class="recent-blog-posts mt-0 pt-2">
     <div class="container" data-aos="fade-up">
 
         <div class=" section-header">

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admins;
+use App\Models\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class Frontend extends Controller
 {
@@ -39,7 +42,12 @@ class Frontend extends Controller
      */
     public function create()
     {
-        //
+        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil');
+    }
+
+    public function indexcomment(){
+        $comment = Comments::all();
+        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil', compact('comment'));
     }
 
     /**
@@ -50,7 +58,35 @@ class Frontend extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //  dd($request);  
+        $validator = Validator::make($request->all(), [
+            'id_detil' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'website' => 'required',
+            'comment' => 'required',
+        ]);
+        // mengembalikan pesan eror
+        if($validator->fails()){
+            return back()->withErrors($validator->messages());
+        }
+
+        $data = [
+            'id_detil' => $request->id_detil,
+            'name' => $request->name,
+            'email' => $request->email,
+            'website' => $request->website,
+            'comment' => $request->comment,
+        ];
+
+        $comment = Comments::create($data);
+
+        if($comment){
+            return Redirect()->to('/detilformthem/'.$request->id_detil)->withSuccess('Data berhasil ditambahkan');
+
+        }else{
+            return back()->withErrors('Gagal menambahkan data');
+        }
     }
 
     /**

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admins;
-use App\Models\Index;
 use App\Models\Units;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class IndexFe extends Controller
+class UnitFeature extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +14,8 @@ class IndexFe extends Controller
      */
     public function index()
     {
-        // $post = Admins::all();
-        $post = Admins::paginate(3);
         $ganti = Units::all();
-        // $date = Carbon::parse($post->created_at)->format('M d');
-        return view('frontEnd.indexfe.master', compact('post','ganti'));
-
+        return view('frontEnd.indexfe.feature', compact('ganti'));
     }
 
     /**
@@ -49,10 +42,10 @@ class IndexFe extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Index $index)
+    public function show($id)
     {
         //
     }
@@ -60,10 +53,10 @@ class IndexFe extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Index $index)
+    public function edit($id)
     {
         //
     }
@@ -72,10 +65,10 @@ class IndexFe extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Index $index)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -83,10 +76,10 @@ class IndexFe extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Index $index)
+    public function destroy($id)
     {
         //
     }
