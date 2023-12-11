@@ -4,10 +4,10 @@
     <div class="mt-3">
         @foreach ($template as $list)
             <div class="post-item mt-3">
-                <img src="{{ asset('UpConstruction') }}/assets/img/blog/blog-recent-1.jpg" alt="">
+                <img src="http://127.0.0.1:8000{{Storage::url($list->images)}}" alt="">
                 <div>
                     <h4><a href="blog-details.html">{{$list->title}}</a></h4>
-                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                    <time datetime="2020-01-01">{{$list->created_at}}</time>
                 </div>
             </div><!-- End recent post item-->
         @endforeach
