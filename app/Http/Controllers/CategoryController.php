@@ -83,6 +83,7 @@ class CategoryController extends Controller
     {
         $data = [
             // kiri field dari database kanan variable dari form
+            // data akan diisi data kiriman dari form
             'id' => request()->id,
             'category' => request()->categories,
         ];
