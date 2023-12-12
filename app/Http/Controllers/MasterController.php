@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admins;
 use App\Models\Masters;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class MasterController extends Controller
      */
     public function index()
     {
-        return view('frontEnd.master');
+        $blog = Admins::all();
+        return view('frontEnd.indexfe.hero', compact('blog'));
     }
 
     /**

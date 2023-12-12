@@ -15,7 +15,7 @@ class CommentController extends Controller
     public function index()
     {
         $comment = Comments::all();
-        return view('frontEnd.indexfe.blogsdetil.body', compact('comment'));
+        return view('frontEnd.indexfe.blogsdetil.main', compact('comment'));
     }
 
     /**

@@ -2,7 +2,7 @@
     <h3 class="sidebar-title">Recent Posts</h3>
 
     <div class="mt-3">
-        @foreach ($template as $list)
+        @foreach ($recent as $list)
             <div class="post-item mt-3">
                 <img src="http://127.0.0.1:8000{{Storage::url($list->images)}}" alt="">
                 <div>

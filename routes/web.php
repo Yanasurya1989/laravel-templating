@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminMaster;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Frontend;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IndexFe;
@@ -68,6 +69,7 @@ Route::get('/detilformthem/{id}', [Frontend::class, 'detilformthem']);
 // detil
 // Route::get('/detil/{id}', [Frontend::class, 'show']); //mine
 Route::get('/detil/{id}', [Frontend::class, 'showdetil']); //mine
+// Route::get('/detilformthem/{id}', [Frontend::class, 'recentpost']); //mine
 Route::get('/detil', [Frontend::class, 'showdetil']);
 Route::get('/summernote', [AdminMaster::class, 'summernote']);
 Route::get('/ckeditor', [AdminMaster::class, 'ckeditor']);
@@ -89,3 +91,10 @@ Route::get('/admin/articles', [ArtikelController::class, 'index']);
 Route::get('/admin/article/create', [ArtikelController::class, 'create']);
 Route::post('/admin/article/store', [ArtikelController::class, 'store']);
 
+// categories
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/create', [CategoryController::class, 'create']);
+Route::post('/categories/store', [CategoryController::class, 'store']);
+Route::get('/categories/destroy/{categories}', [CategoryController::class, 'destroy']);
+Route::get('/categories/edit/{categories}', [CategoryController::class, 'edit']);
+Route::post('/categories/update/{categories}', [CategoryController::class, 'update']);

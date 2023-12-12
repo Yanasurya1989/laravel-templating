@@ -32,7 +32,10 @@ class Frontend extends Controller
 
     public function detilformthem($id){
         $template = Admins::where('id', $id)->get();
-        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil', compact('template'));
+        $recent = Admins::all();
+        $comment = Comments::where('id_detil', $id)->get();
+
+        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil', compact('template','recent','comment'));
     }
 
     /**
@@ -106,6 +109,11 @@ class Frontend extends Controller
     public function showdetil($id){
         $template = Admins::where('id', $id)->get();
         return view('frontEnd.indexfe.blogsdetil.detilsarticle', compact('template'));
+    }
+
+    public function recentpost(){
+        $recent = Admins::all();
+        return view('frontEnd.indexfe.blogsdetil.detilsarticle', compact('recent'));
     }
 
     // public function showthemeblogdetil($id){

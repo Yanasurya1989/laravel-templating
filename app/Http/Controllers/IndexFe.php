@@ -20,8 +20,10 @@ class IndexFe extends Controller
         // $post = Admins::all();
         $post = Admins::paginate(3);
         $ganti = Units::all();
+        $blog = Admins::all();
+
         // $date = Carbon::parse($post->created_at)->format('M d');
-        return view('frontEnd.indexfe.master', compact('post','ganti'));
+        return view('frontEnd.indexfe.master', compact('post','ganti','blog'));
 
     }
 
