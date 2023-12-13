@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Articles extends Model
 {
@@ -14,19 +15,27 @@ class Articles extends Model
         'gambar',
         'title',
         'content',
+        'id_category',
+        // 'author',
         
         // 'jenis',
-        // 'id_user',
+        'id_user',
         // 'id_jenis',
         'created_at',
         'updated_at',
 
-    ];
+    ];   
 
-    // public function users()
-    // {
-    //     return $this->belongsTo(User::class, 'id_user', 'id');
-    // }
+    public function categories(){
+        return $this->belongsTo(Categories::class, 'id_category', 'id');
+    }
+
+    protected $dates = ['created_at','updated_at'];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 
     // public function types()
     // {
@@ -39,6 +48,4 @@ class Articles extends Model
     //         'id' // Local key on the cars table...
     //     );
     // }
-
-    protected $dates = ['created_at','updated_at'];
 }

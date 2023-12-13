@@ -21,7 +21,7 @@
                         <th>Deskripsi</th>
                         <th>Title</th>
                         <th>Konten</th>
-                        <th>Jenis</th>
+                        <th>Category</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -30,16 +30,20 @@
                         
                     <tr class="active">
                         <th scope="row">{{$loop->iteration+$articles->firstItem()-1}}</th>
+                        <td> {{$list->users->name}} </td>
+                        
+                        {{-- <td>{{ $list->users->name }}</td>
+                        <td>{{ $list->users->profesi }}</td> --}}
+                        
+                        
+                        {{-- <td>{{ $list->users->deskripsi }}</td> --}}
+                        <td> </td>   
                         <td>
                             {{-- <a href="{{Storage::url($list->users->foto)}}">Lihat file</a> --}}
                             <img src="http://127.0.0.1:8000{{Storage::url($list->users->foto)}}" alt="" width="100">
-                        </td>
-                        <td>{{ $list->users->name }}</td>
-                        <td>{{ $list->users->profesi }}</td>
-                        
-                        <td>{{ $list->users->deskripsi }}</td>                        
+                        </td>                     
                         <td>{{$list->title}}</td>
-                        <td>{{$list->types->jenis}}</td>
+                        <td>{{$list->categories->category}}</td>
                         <td>{{substr(strip_tags($list->content),0,100)}}</td>
                         <td>{{substr(strip_tags($list->content),0,100)}}</td>
                         <td>

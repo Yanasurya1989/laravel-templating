@@ -37,7 +37,7 @@
                         <td>
                             <a href="">Detil | </a>
                             <a href="/post/edit/{{$list->id}}">Update | </a>
-                            <a href="post/delete/{{ $list->id }}" onclick="return confirm('Yakin?')">Delete</a>
+                            <a href="/post/delete/{{ $list->id }}" onclick="return confirm('Yakin?')">Delete</a>
                         </td>
                     </tr>
 

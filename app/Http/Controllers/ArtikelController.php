@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Articles;
+use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,6 +20,7 @@ class ArtikelController extends Controller
     {
         // $articles = Articles::all();
         $articles = Articles::paginate(5);
+        // $categories = Categories::all();
         // dd($articles);
         return view('backEnd.article.content', compact('articles'));
     }
@@ -29,7 +32,8 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        return view('backEnd.article.insert');
+        $categories = Categories::all();
+        return view('backEnd.article.insert', compact('categories'));
     }
 
     /**
@@ -46,8 +50,12 @@ class ArtikelController extends Controller
             'gambar' => 'required',
             'title' => 'required',
             'content' => 'required',
+            'id_category' => 'required',
+            // 'author' => 'required',
             // 'jenis' => 'required',
         ]);
+
+        // dd($validator);
 
         // mengembalikan pesan eror
         if($validator->fails()){
@@ -55,11 +63,12 @@ class ArtikelController extends Controller
         }
 
         $data = [
-            // 'id_user' => $request->id_user,
+            'id_user' => Auth::id(),
             // 'id_jenis' => $request->id_jenis,
             'title' => $request->title,
-            'author' => $request->author,
+            // 'author' => $request->author,
             'content' => $request->content,
+            'id_category' => $request->id_category,
             // 'jenis' => $request->jenis,
         ];
 
@@ -71,6 +80,7 @@ class ArtikelController extends Controller
             $data['gambar'] = $path;
         }
 
+        // dd($data);
         $articles = Articles::create($data);
 
         if($articles){

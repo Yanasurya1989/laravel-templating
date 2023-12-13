@@ -134,15 +134,22 @@
                     <a href="/head"><i class="fa fa-dashboard fa-fw nav_icon"></i>Head</a>
                 </li>
 
+                
+
                 <li>
                     <a href="#"><i class="fa fa-envelope nav_icon"></i>Post<span
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/admin">Berita</a>
+                            <a href="/admin">
+                                <i class="fa fa-envelope nav_icon"></i>Berita
+                            </a>
                         </li>
                         <li>
-                            <a href="/admin/articles">Artikel</a>
+                            <a href="/admin/articles">
+                                <i class="fa fa-envelope nav_icon"></i>
+                                Artikel
+                            </a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -158,6 +165,63 @@
 
                 <li>
                     <a href="/logout"><i class="fa fa-dashboard fa-fw nav_icon"></i>Logout</a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
+                </li>
+                <li>
+                    <a href="#"> </a>
                 </li>
                 {{-- <li>
                     <a href="#"><i class="fa fa-laptop nav_icon"></i>Logout<span class="fa arrow"></span></a>
