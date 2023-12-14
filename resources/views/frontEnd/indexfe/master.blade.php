@@ -81,6 +81,10 @@
         @include('frontEnd.indexfe.recentblog')
         <!-- ======= End Recent Blog Posts Section ======= -->
 
+        <!-- ======= Recent Blog Posts Section ======= -->
+        @include('frontEnd.indexfe.kategoryArtikel')
+        <!-- ======= End Recent Blog Posts Section ======= -->
+
     </main>
     <!-- End #main -->
 

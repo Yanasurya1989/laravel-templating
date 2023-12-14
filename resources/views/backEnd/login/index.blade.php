@@ -41,7 +41,9 @@
                 </div>
                 <div class="mb-3">
                     
-                        <button class="btn btn-success form-control" type="submit"><a href="/register">Register</a></button>
+                        <button class="btn btn-success form-control" type="submit">
+                            <a href="/register">Register</a>
+                        </button>
                     
                 </div>
             </form>

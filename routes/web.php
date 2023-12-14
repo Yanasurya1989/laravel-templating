@@ -9,6 +9,8 @@ use App\Http\Controllers\IndexFe;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\User;
+use App\Http\Controllers\UserController;
 use App\Models\Admins;
 use App\Models\Articles;
 use Illuminate\Support\Facades\Route;
@@ -89,7 +91,10 @@ Route::post('/registerProses', [Login::class, 'store']);
 // artikel
 Route::get('/admin/articles', [ArtikelController::class, 'index']);
 Route::get('/admin/article/create', [ArtikelController::class, 'create']);
+Route::get('/admin/article/destroy/{articles}', [ArtikelController::class, 'destroy']);
 Route::post('/admin/article/store', [ArtikelController::class, 'store']);
+Route::get('/admin/article/edit/{articles}', [ArtikelController::class, 'edit']);
+Route::post('/admin/article/update/{categories}', [ArtikelController::class, 'update']);
 
 // categories
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -98,3 +103,8 @@ Route::post('/categories/store', [CategoryController::class, 'store']);
 Route::get('/categories/destroy/{categories}', [CategoryController::class, 'destroy']);
 Route::get('/categories/edit/{categories}', [CategoryController::class, 'edit']);
 Route::post('/categories/update/{categories}', [CategoryController::class, 'update']);
+
+// user
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/edit/{user}', [UserController::class, 'edit']);
+Route::post('/user/update/{id}', [UserController::class, 'update']);

@@ -16,26 +16,21 @@ class Articles extends Model
         'title',
         'content',
         'id_category',
-        // 'author',
-        
-        // 'jenis',
         'id_user',
-        // 'id_jenis',
         'created_at',
         'updated_at',
-
     ];   
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 
     public function categories(){
         return $this->belongsTo(Categories::class, 'id_category', 'id');
     }
 
     protected $dates = ['created_at','updated_at'];
-
-    public function users()
-    {
-        return $this->belongsTo(User::class, 'id_user', 'id');
-    }
 
     // public function types()
     // {

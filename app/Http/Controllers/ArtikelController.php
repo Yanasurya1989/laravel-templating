@@ -6,6 +6,7 @@ use App\Models\Articles;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,7 +22,7 @@ class ArtikelController extends Controller
         // $articles = Articles::all();
         $articles = Articles::paginate(5);
         // $categories = Categories::all();
-        // dd($articles);
+        // dd($articles);b
         return view('backEnd.article.content', compact('articles'));
     }
 
@@ -45,31 +46,21 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'id_user' => 'required',
-            // 'id_jenis' => 'required',
             'gambar' => 'required',
             'title' => 'required',
             'content' => 'required',
             'id_category' => 'required',
-            // 'author' => 'required',
-            // 'jenis' => 'required',
         ]);
 
-        // dd($validator);
-
-        // mengembalikan pesan eror
         if($validator->fails()){
             return back()->withErrors($validator->messages());
         }
 
         $data = [
             'id_user' => Auth::id(),
-            // 'id_jenis' => $request->id_jenis,
             'title' => $request->title,
-            // 'author' => $request->author,
             'content' => $request->content,
             'id_category' => $request->id_category,
-            // 'jenis' => $request->jenis,
         ];
 
         if($request->hasFile('gambar')){
@@ -80,7 +71,6 @@ class ArtikelController extends Controller
             $data['gambar'] = $path;
         }
 
-        // dd($data);
         $articles = Articles::create($data);
 
         if($articles){
@@ -110,7 +100,7 @@ class ArtikelController extends Controller
      */
     public function edit(Articles $articles)
     {
-        //
+        return view('backEnd.article.edit', compact('articles'));
     }
 
     /**
@@ -122,7 +112,38 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, Articles $articles)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'gambar',
+            'title' => 'required',
+            'content' => 'required',
+            // 'id_category',
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator->messages());
+        }
+
+        $data = [
+            'id' => request()->id,
+            'title' => request()->title,
+            'content' => request()->content,
+            // 'id_category' => $request->id_category,
+        ];
+
+        if($request->hasFile('gambar')){
+            $gambar = $request->file('gambar');
+
+            $path = Storage::putFile('public/images', $gambar);
+            $data['gambar'] = $path;
+        }
+
+        $content = $articles->update($data);
+
+        if($content){
+            return Redirect()->to('/admin/articles')->withSuccess('Updated');
+        }else{
+            return back()->withErrors('Failed');
+        }
     }
 
     /**
@@ -133,6 +154,16 @@ class ArtikelController extends Controller
      */
     public function destroy(Articles $articles)
     {
-        //
+        if(Storage::get($articles->gambar)){
+            Storage::delete($articles->gambar);
+        }
+
+        $articles = $articles -> delete();
+
+        if($articles){
+            return back()->withSuccess('Deleted');
+        }else{
+            return back()->withErrors('Failed');
+        }
     }
 }

@@ -10,7 +10,9 @@
 <body>
     <div class="mb-3 form-group">
         <label for="" class="form-label">Contentnya</label>
-        <textarea name="content" id="summernote" cols="30" rows="10" class="form-control1"></textarea>
+        <textarea name="content" id="summernote" cols="30" rows="10" class="form-control1">
+            {{-- {{$articles->content}} --}}
+        </textarea>
     </div>
     
     <script>
