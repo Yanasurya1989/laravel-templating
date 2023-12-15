@@ -12,14 +12,18 @@ class Admins extends Model
     protected $primaryKey ='id';
     protected $fillable = [
         'title',
-        'author',
+        // 'author',
         'content',
         'images',
         'created_at',
         'updated_at',
-
+        'id_user'
     ];
 
     protected $dates = ['created_at','updated_at'];
+
+    public function postsUser(){
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 
 }

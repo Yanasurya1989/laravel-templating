@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admins;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -49,7 +50,7 @@ class AdminMaster extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'author' => 'required',
+            // 'author' => 'required',
             'title' => 'required',
             'content' => 'required',
             'images',
@@ -61,8 +62,9 @@ class AdminMaster extends Controller
         }
 
         $data = [
+            'id_user' => Auth::id(),
             'title' => $request->title,
-            'author' => $request->author,
+            // 'author' => $request->author,
             'content' => $request->content,
         ];
 

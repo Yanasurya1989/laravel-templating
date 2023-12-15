@@ -34,8 +34,9 @@ class Frontend extends Controller
         $template = Admins::where('id', $id)->get();
         $recent = Admins::all();
         $comment = Comments::where('id_detil', $id)->get();
+        $allcomm = Comments::all();
 
-        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil', compact('template','recent','comment'));
+        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil', compact('template','recent','comment', 'allcomm'));
     }
 
     /**

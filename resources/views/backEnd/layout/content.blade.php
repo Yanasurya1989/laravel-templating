@@ -15,6 +15,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Author's Foto</th>
                         <th>Images</th>
                         <th>Title</th>
                         <th>Author</th>
@@ -28,11 +29,14 @@
                     <tr class="active">
                         <th scope="row">{{$loop->iteration+$post->firstItem()-1}}</th>
                         <td>
+                            <img src="http://127.0.0.1:8000{{ Storage::url($list->postsUser->foto) }}" alt="" height="73">
+                        </td>
+                        <td>
                             <img src="http://127.0.0.1:8000{{ Storage::url($list->images) }}" alt="" width="100">
                             {{-- <a href="{{Storage::url($list->images)}}">Lihat file</a> --}}
                         </td>
                         <td>{{$list->title}}</td>
-                        <td>{{$list->author}}</td>
+                        <td>{{$list->postsUser->name}}</td>
                         <td>{{substr(strip_tags($list->content),0,100)}}</td>
                         <td>
                             <a href="">Detil | </a>
@@ -50,6 +54,8 @@
             </div>
         </div>
     </div>
+
+    
     
     <div class="clearfix"></div>
 </div>

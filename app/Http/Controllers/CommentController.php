@@ -18,6 +18,12 @@ class CommentController extends Controller
         return view('frontEnd.indexfe.blogsdetil.main', compact('comment'));
     }
 
+    public function commentbe()
+    {
+        $comment = Comments::all();
+        return view('backEnd.comment.index', compact('comment'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

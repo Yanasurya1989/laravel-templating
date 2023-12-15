@@ -5,7 +5,7 @@
 <div class="container">
     <div class="tab-pane active" id="horizontal-form">
         {{-- @php dd($user) @endphp --}}
-        <form action="#" method="POST" class="form-horizontal" enctype="multipart/form-data">
+        <form action="/user/update/{{$user->id}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
             @if (session('errors'))
                 <div class="alert alert-danger" role="alert">
                     {{(session('errors'))->first()}}
@@ -14,7 +14,7 @@
             @csrf
             <div class="mb-3 form-group">
                 <label for="" class="form-label">id</label>
-                <input type="text" name="id" class="form-control1" value="{{$user->id}}" disabled>
+                <input type="text" name="id" class="form-control1" value="{{$user->id}}" readonly>
             </div>
             <div class="mb-3 form-group">
                 <label for="" class="form-label">Foto</label> <br>
@@ -25,7 +25,7 @@
 
             <div class="mb-3 form-group">
                 <label for="" class="form-label">Nama</label>
-                <input type="text" name="nama" class="form-control1" value="{{$user->name}}">
+                <input type="text" name="name" class="form-control1" value="{{$user->name}}">
             </div>
     
             <div class="mb-3 form-group">
@@ -38,7 +38,7 @@
                 <textarea name="deskripsi" id="summernote" cols="30" rows="10" class="form-control1">{{ $user ->deskripsi }}"</textarea>
             </div>
 
-            <button class="btn btn-primary">Post</button>
+            <button class="btn btn-warning">Update</button>
         </form>
     </div>
 </div>

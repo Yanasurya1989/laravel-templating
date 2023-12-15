@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminMaster;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Frontend;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IndexFe;
@@ -107,4 +108,7 @@ Route::post('/categories/update/{categories}', [CategoryController::class, 'upda
 // user
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/edit/{user}', [UserController::class, 'edit']);
-Route::post('/user/update/{id}', [UserController::class, 'update']);
+Route::post('/user/update/{user}', [UserController::class, 'update']);
+
+// commetn
+Route::get('/comment', [CommentController::class, 'commentbe']);

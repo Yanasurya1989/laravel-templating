@@ -1,29 +1,31 @@
 <h4 class="comments-count">8 Comments</h4>
 
 @foreach ($comment as $list)
-<div id="comment-1" class="comment">
-        <div class="d-flex">
+    @if ($list->allow == 'y')
+        <div id="comment-1" class="comment">
+            <div class="d-flex">
 
-            <div class="comment-img"><img src="{{ asset('UpConstruction') }}/assets/img/blog/comments-1.jpg"
-                    alt="">
-            </div>
+                <div class="comment-img"><img src="{{ asset('UpConstruction') }}/assets/img/blog/comments-1.jpg"
+                        alt="">
+                </div>
 
-            <div>
-                <h5><a href="">{{ $list->name }}</a> 
-                    <a href="#" class="reply">
-                        <i class="bi bi-reply-fill"></i>
-                        Reply
-                    </a>
-                </h5>
-                <time datetime="2020-01-01">{{ $list->created_at }}</time>
-                <p>
-                    {{ $list->comment }}
-                </p>
-            </div>
+                <div>
+                    <h5><a href="">{{ $list->name }}</a>
+                        <a href="#" class="reply">
+                            <i class="bi bi-reply-fill"></i>
+                            Reply
+                        </a>
+                    </h5>
+                    <time datetime="2020-01-01">{{ $list->created_at }}</time>
+                    <p>
+                        {{ $list->comment }}
+                    </p>
+                </div>
 
-        </div><br>
-    </div>
-    @endforeach
+            </div><br>
+        </div>
+    @endif
+@endforeach
 
 <!-- End comment #1 -->
 

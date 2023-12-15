@@ -16,6 +16,7 @@ class Comments extends Model
         'email',
         'website',
         'comment',
+        'allow',
         'created_at',
         'updated_at',
     ];

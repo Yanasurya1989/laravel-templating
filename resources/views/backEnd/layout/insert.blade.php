@@ -23,10 +23,10 @@
                 <input type="text" name="title" class="form-control1">
             </div>
 
-            <div class="mb-3 form-group">
+            {{-- <div class="mb-3 form-group">
                 <label for="" class="form-label">Author</label>
                 <input type="text" name="author" class="form-control1">
-            </div>
+            </div> --}}
     
             {{-- <div class="mb-3 form-group">
                 <label for="" class="form-label">Content</label>
