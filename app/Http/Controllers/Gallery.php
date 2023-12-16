@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admins;
-use App\Models\Categories;
 use App\Models\Galleries;
-use App\Models\Index;
-use App\Models\Units;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class IndexFe extends Controller
+class Gallery extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,15 +15,8 @@ class IndexFe extends Controller
      */
     public function index()
     {
-        // $post = Admins::all();
-        $post = Admins::paginate(3);
-        $ganti = Units::all();
-        $blog = Admins::all();
-        $category = Categories::all();
         $gallery = Galleries::all();
-        // $date = Carbon::parse($post->created_at)->format('M d');
-        return view('frontEnd.indexfe.master', compact('post','gallery', 'ganti','blog', 'category'));
-
+        return view('backEnd.gallery.index', compact('gallery'));
     }
 
     /**
@@ -37,7 +26,7 @@ class IndexFe extends Controller
      */
     public function create()
     {
-        //
+        return view('backEnd.gallery.insert');
     }
 
     /**
@@ -48,16 +37,35 @@ class IndexFe extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'title' => $request->title,
+            'teks' => $request->teks,
+        ];
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+
+            $path = Storage::putFileAs('public/images', $image, $image->getClientOriginalName());
+            $data['image'] = $path;
+        }
+
+        $post = Galleries::create($data);
+
+        if($post){
+            return Redirect()->to('/gallery')->withSuccess('Data berhasil ditambahkan');
+
+        }else{
+            return back()->withErrors('Gagal menambahkan data');
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Index  $index
+     * @param  \App\Models\Galleries  $galleries
      * @return \Illuminate\Http\Response
      */
-    public function show(Index $index)
+    public function show(Galleries $galleries)
     {
         //
     }
@@ -65,10 +73,10 @@ class IndexFe extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Index  $index
+     * @param  \App\Models\Galleries  $galleries
      * @return \Illuminate\Http\Response
      */
-    public function edit(Index $index)
+    public function edit(Galleries $galleries)
     {
         //
     }
@@ -77,10 +85,10 @@ class IndexFe extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Index  $index
+     * @param  \App\Models\Galleries  $galleries
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Index $index)
+    public function update(Request $request, Galleries $galleries)
     {
         //
     }
@@ -88,10 +96,10 @@ class IndexFe extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Index  $index
+     * @param  \App\Models\Galleries  $galleries
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Index $index)
+    public function destroy(Galleries $galleries)
     {
         //
     }

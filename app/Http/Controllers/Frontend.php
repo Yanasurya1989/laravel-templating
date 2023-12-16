@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admins;
+use App\Models\Categories;
 use App\Models\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -35,8 +36,9 @@ class Frontend extends Controller
         $recent = Admins::all();
         $comment = Comments::where('id_detil', $id)->get();
         $allcomm = Comments::all();
+        $category = Categories::all();
 
-        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil', compact('template','recent','comment', 'allcomm'));
+        return view('frontEnd.indexfe.blogsdetil.themeblogsdetil', compact('template','category', 'recent','comment', 'allcomm'));
     }
 
     /**

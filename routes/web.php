@@ -5,6 +5,7 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Frontend;
+use App\Http\Controllers\Gallery;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IndexFe;
 use App\Http\Controllers\Login;
@@ -14,6 +15,7 @@ use App\Http\Controllers\User;
 use App\Http\Controllers\UserController;
 use App\Models\Admins;
 use App\Models\Articles;
+use App\Models\Galleries;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,3 +114,8 @@ Route::post('/user/update/{user}', [UserController::class, 'update']);
 
 // commetn
 Route::get('/comment', [CommentController::class, 'commentbe']);
+
+// gallery
+Route::get('/gallery', [Gallery::class, 'index']);
+Route::get('/gallery/create', [Gallery::class, 'create']);
+Route::post('/gallery/store', [Gallery::class, 'store']);
